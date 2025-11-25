@@ -92,15 +92,15 @@ jobs:
       
       - uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: msaju20
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           
       - uses: docker/build-push-action@v5
         with:
           push: true
           tags: |
-            kaw393939/601_module9:latest
-            kaw393939/601_module9:${{ github.sha }}
+            msaju20/module12_is601:latest
+            msaju20/module12_is601:${{ github.sha }}
           platforms: linux/amd64,linux/arm64
-          cache-from: type=registry,ref=kaw393939/601_module9:cache
+          cache-from: type=registry,ref=msaju20/module12_is601:buildcache
           cache-to: type=inline,mode=max
