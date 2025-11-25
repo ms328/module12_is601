@@ -2,6 +2,8 @@ import socket
 import subprocess
 import time
 import logging
+import sys
+import os
 from typing import Generator, Dict, List
 from contextlib import contextmanager
 
@@ -185,12 +187,13 @@ def fastapi_server():
 
     logger.info(f"Starting FastAPI server on port {base_port}...")
 
+    # Use the current Python executable to run uvicorn as a module
     process = subprocess.Popen(
-        ['uvicorn', 'app.main:app', '--host', '127.0.0.1', '--port', str(base_port)],
+        [sys.executable, '-m', 'uvicorn', 'app.main:app', '--host', '127.0.0.1', '--port', str(base_port)],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True,
-        cwd='.'  # ensure the working directory is set correctly
+        cwd=os.getcwd()  # ensure the working directory is set correctly
     )
 
     # IMPORTANT: Use the /health endpoint for the check!
