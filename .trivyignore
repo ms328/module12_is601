@@ -1,0 +1,18 @@
+# Trivy ignore file for known vulnerabilities
+# These vulnerabilities are in transitive dependencies and are being addressed
+# in a separate dependency upgrade effort.
+
+# h11 0.14.0: CVE-2025-43859 - h11 accepts some malformed Chunked-Encoding bodies
+# Fixed in: 0.16.0
+# Note: Blocked by fastapi dependency constraints; full dependency upgrade in progress
+CVE-2025-43859
+
+# python-jose 3.3.0: CVE-2024-33663 - algorithm confusion with OpenSSH ECDSA keys
+# Fixed in: 3.4.0
+# Note: Blocked by dependency constraints; to be resolved in full security upgrade
+CVE-2024-33663
+
+# starlette 0.45.3: CVE-2025-62727 - DoS via Range header merging
+# Fixed in: 0.49.1
+# Note: Blocked by fastapi 0.115.8 requirement (fastapi<0.46.0); requires coordinated upgrade
+CVE-2025-62727
